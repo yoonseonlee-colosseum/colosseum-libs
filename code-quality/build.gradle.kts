@@ -1,29 +1,31 @@
+group = "com.colosseum"
+version = "1.0.0"
+
 plugins {
-    kotlin("jvm") version "2.0.20"
     id("com.diffplug.spotless") version "6.25.0"
 
-    `kotlin-dsl` // gradle plugin 개발용
+    `kotlin-dsl`
     `maven-publish`
     `java-gradle-plugin`
 }
 
 repositories {
-    gradlePluginPortal() // 여기서 플러그인 의존성 가져올 수 있음(gradlePlugin)
+    gradlePluginPortal()
     mavenCentral()
 }
 
 gradlePlugin {
     plugins {
-        create("colosseumSpotless") {
-            id = "com.colosseum.spotless" // 소비자 리포에서 쓸 플러그인 ID
-            implementationClass = "java.lang.Object"
+        create("colosseumCodeQuality") {
+            id = "com.colosseum.code-quality" // 소비자 리포에서 쓸 플러그인 ID
+            implementationClass = "com.colosseum.codequality.EmptyPlugin"
         }
     }
 }
 
 spotless {
     // 변경된 파일만 검사하도록 설정하여 속도 향상
-//    ratchetFrom("HEAD")
+    ratchetFrom("HEAD")
 
     kotlin {
         ktlint("1.4.1")
