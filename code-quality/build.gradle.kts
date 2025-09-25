@@ -1,5 +1,5 @@
 group = "com.colosseum"
-version = "1.0.7"
+version = "1.0.8"
 
 plugins {
     id("com.diffplug.spotless") version "6.25.0"
@@ -31,7 +31,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/yoonseonlee-colosseum/colosseum-libs")
+            url = uri("https://maven.pkg.github.com/yoonseonlee-colosseum/colosseum-libs-backend")
             credentials {
                 username = project.findProperty("gpr.user") as String
                 password = project.findProperty("gpr.key") as String

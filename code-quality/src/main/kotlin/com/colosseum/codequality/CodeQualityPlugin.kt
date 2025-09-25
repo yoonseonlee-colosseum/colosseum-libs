@@ -7,7 +7,7 @@ import org.gradle.api.Project
 @Suppress("unused")
 class CodeQualityPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        println(">>> [CodeQualityPlugin] 플러그인 적용됨 on project: ${target.name}")
+        println(">>> [CodeQualityPlugin] 적용됨 on project: ${target.name}")
 
         // Spotless 플러그인 적용
         target.pluginManager.apply("com.diffplug.spotless")
@@ -32,6 +32,13 @@ class CodeQualityPlugin : Plugin<Project> {
                         "ij_kotlin_allow_trailing_comma" to true,
                         "ij_kotlin_allow_trailing_comma_on_call_site" to true,
                         "no-wildcard-imports" to true,
+
+                        // Kotlin-specific
+                        "ij_kotlin_imports_layout" to "java.**,|,javax.**,|,jakarta.**,|,kotlin.**,|,org.**,|,com.**,|,*",
+                        "ij_kotlin_name_count_to_use_star_import" to 999,
+                        "ij_kotlin_name_count_to_use_star_import_for_members" to 999,
+                        "ij_kotlin_allow_trailing_comma" to true,
+                        "ij_kotlin_allow_trailing_comma_on_call_site" to true,
                     )
                 )
                 target("**/*.kt")
@@ -71,9 +78,9 @@ class CodeQualityPlugin : Plugin<Project> {
 
             // 기타 Misc 파일 규칙
             format("misc") {
-                target("*.gradle", "*.md", ".gitignore")
+                target("**/*.gradle", "**/*.md", "**/.gitignore", "**/.gitattributes")
                 trimTrailingWhitespace()
-                indentWithSpaces()
+                indentWithSpaces(2)
                 endWithNewline()
             }
         }
