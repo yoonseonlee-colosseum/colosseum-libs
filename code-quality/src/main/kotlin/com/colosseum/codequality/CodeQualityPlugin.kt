@@ -15,8 +15,6 @@ class CodeQualityPlugin : Plugin<Project> {
         // Spotless 확장 가져와서 규칙 설정
         val spotless = target.extensions.getByType(SpotlessExtension::class.java)
         spotless.apply {
-            // 변경된 파일만 검사하도록 설정하여 속도 향상
-            ratchetFrom("HEAD")
 
             // Kotlin 소스 규칙
             kotlin {

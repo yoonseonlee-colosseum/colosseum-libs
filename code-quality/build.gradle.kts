@@ -1,5 +1,5 @@
 group = "com.colosseum"
-version = "1.0.9"
+version = "2.0.2"
 
 plugins {
     id("com.diffplug.spotless") version "6.25.0"
