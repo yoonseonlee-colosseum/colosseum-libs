@@ -2,5 +2,6 @@ rootProject.name = "colosseum-libs"
 
 include(
     "code-quality",
-    "excel"
+    "excel",
+    "colo-util"
 )
